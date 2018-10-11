@@ -1154,6 +1154,16 @@ namespace NuGet.Protocol.Plugins
             throw new NotImplementedException();
         }
 
+        public override bool SkipPackageSignatureVerification(SignedPackageVerifierSettings verifierSettings)
+        {
+            if (!verifierSettings.AllowUnsigned)
+            {
+                throw new SignatureException(NuGetLogCode.NU3041, Strings.Plugin_DownloadNotSupportedSinceUnsignedNotAllowed);
+            }
+
+            return true;
+        }
+
         private sealed class FileStreamCreator : IDisposable
         {
             private readonly string _filePath;
