@@ -1154,7 +1154,7 @@ namespace NuGet.Protocol.Plugins
             throw new NotImplementedException();
         }
 
-        public override bool SkipPackageSignatureVerification(SignedPackageVerifierSettings verifierSettings)
+        public override bool CanVerifySignedPackages(SignedPackageVerifierSettings verifierSettings)
         {
             if (!verifierSettings.AllowUnsigned)
             {
